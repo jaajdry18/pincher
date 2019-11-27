@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:macro name="n_joint" params="name type axis_xyz origin_rpy origin_xyz parent child">
+ <joint name="${name}" type="${type}">
+    <origin xyz="${origin_xyz}" rpy="${origin_rpy}" />
+    <parent link="${parent}" />
+    <child link="${child}" />
+    <axis xyz="${axis_xyz}" />
+    <limit lower="-1.5708" upper="1.5708" effort="1000" velocity="0.5" />
+  </joint>
+</xacro:macro>
+
+<xacro:macro name="n_link" params="name inertial_origin_xyz inertial_origin_rpy origin_xyz origin_rpy  mass_value inertia_ixx inertia_ixy inertia_ixz inertia_iyy inertia_iyz inertia_izz mesh_filename">
+
+<link
+    name="${name}">
+ <inertial>
+      <origin xyz="${inertial_origin_xyz}" rpy="${inertial_origin_rpy}"/>
+      <mass value="${mass_value}"/>
+      <inertia ixx="${inertia_ixx}" ixy="${inertia_ixy}" ixz="${inertia_ixz}" iyy="${inertia_iyy}" iyz="${inertia_iyz}" izz="${inertia_izz}"/>
+    </inertial>
+    <visual>
+      <origin xyz="${origin_xyz}" rpy="${origin_rpy}"/>
+      <geometry>
+        <mesh filename="${mesh_filename}" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="${origin_xyz}" rpy="${origin_rpy}"/>
+      <geometry>
+        <mesh filename="${mesh_filename}" />
+      </geometry>
+    </collision>
+  </link>
+</xacro:macro>
+</robot>

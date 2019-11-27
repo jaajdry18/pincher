@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="robotpincher" xmlns:xacro="http://www.ros.org/wiki/xacro">
+ <!-- Used for fixing robot to Gazebo 'base_link' -->
+<!--link name="world"/> <joint name="fixed" type="fixed"> <parent link="world"/> <child link="base_link"/> </joint>-->
+
+<!-- BON - Include -->
+<xacro:include filename="$(find robotpincher)/urdf/links_joints.xacro"/>
+<xacro:include filename="$(find robotpincher)/urdf/robot_parameters.xacro"/>
+<xacro:include filename="$(find robotpincher)/urdf/transmissions.xacro"/>
+<xacro:include filename="$(find robotpincher)/urdf/robotpincher.gazebo"/>
+
+
+<!--Links and Joints-->
+  <n_link
+        name="${l00}"
+        inertial_origin_xyz="-3.0003E-12 0.028128 -0.011116"
+        inertial_origin_rpy="0 0 0"
+        mass_value="0.12147"
+        inertia_ixx="0.00017253"
+        inertia_ixy="-1.4609E-15"
+        inertia_ixz="5.2081E-15"
+        inertia_iyy="0.00015924"
+        inertia_iyz="8.6917E-06"
+        inertia_izz="0.00024303"
+        origin_xyz="0 0 0"
+        origin_rpy="0 0 0"
+        mesh_filename="package://robotpincher/meshes/base_link.STL"/>
+  <n_link
+        name="${l01}"
+        inertial_origin_xyz="-0.00096532 -6.2613E-12 0.067704"
+        inertial_origin_rpy="0 0 0"
+        mass_value="0.045584"
+        inertia_ixx="1.0435E-05"
+        inertia_ixy="-5.2081E-15"
+        inertia_ixz="-2.5269E-07"
+        inertia_iyy="1.2447E-05"
+        inertia_iyz="1.4608E-15"
+        inertia_izz="7.1283E-06"
+        origin_xyz="0 0 0"
+        origin_rpy="0 0 0"
+        mesh_filename="package://robotpincher/meshes/Link1.STL"/>
+
+  <n_joint 
+        name="Joint1" type="revolute"
+        origin_rpy="0 0 0" origin_xyz="0 0 0"
+        parent="${l00}"
+        child="${l01}"
+        axis_xyz="0 0 1"/>
+
+  <n_link
+        name="${l02}"
+        inertial_origin_xyz="0.081532 -4.4146E-12 0.00071738"
+        inertial_origin_rpy="0 0 0"
+        mass_value="0.064652"
+        inertia_ixx="1.1916E-05"
+        inertia_ixy="1.4609E-15"
+        inertia_ixz="3.2612E-07"
+        inertia_iyy="1.8721E-05"
+        inertia_iyz="5.2081E-15"
+        inertia_izz="1.3966E-05"
+        origin_xyz="0 0 0"
+        origin_rpy="0 0 0"
+        mesh_filename="package://robotpincher/meshes/Link2.STL"/>
+    
+  <n_joint
+        name="Joint2" type="revolute"
+        origin_xyz="0 0 0.080912" origin_rpy="3.1416 -1.5708 0"
+        parent="${l01}"
+        child="${l02}"
+        axis_xyz="0 0 -1"/>
+
+  <n_link
+        name="${l03}"
+        inertial_origin_xyz="0.081532 -4.4141E-12 0.00071738"
+        inertial_origin_rpy="0 0 0"
+        mass_value="0.064652"
+        inertia_ixx="1.1916E-05"
+        inertia_ixy="1.4608E-15"
+        inertia_ixz="3.2612E-07"
+        inertia_iyy="1.8721E-05"
+        inertia_iyz="5.2081E-15"
+        inertia_izz="1.3966E-05"
+        origin_xyz="0 0 0"
+        origin_rpy="0 0 0"
+        mesh_filename="package://robotpincher/meshes/Link3.STL"/>
+      
+  <n_joint
+        name="Joint3" type="revolute"
+        origin_xyz="0.10798 0 0" origin_rpy="0 0 0"
+        parent="${l02}"
+        child="${l03}"
+        axis_xyz="0 0 -1"/>
+
+  <n_link
+        name="${l04}"
+        inertial_origin_xyz="0.044275 -0.010475 4.2545E-05"
+        inertial_origin_rpy="0 0 0"
+        mass_value="0.055887"
+        inertia_ixx="1.397E-05"
+        inertia_ixy="2.6941E-07"
+        inertia_ixz="3.839E-08"
+        inertia_iyy="9.7406E-06"
+        inertia_iyz="1.461E-15"
+        inertia_izz="1.3925E-05"
+        origin_xyz="0 0 0"
+        origin_rpy="0 0 0"
+        mesh_filename="package://robotpincher/meshes/Link4.STL"/>
+      
+  <n_joint
+        name="Joint4" type="revolute"
+        origin_xyz="0.10798 0 0" origin_rpy="0 0 0"
+        parent="${l03}"
+        child="${l04}"
+        axis_xyz="0 0 -1"/>
+
+  <n_link
+        name="${l05}"
+        inertial_origin_xyz="-0.032112 -0.00040962 1.7381E-15"
+        inertial_origin_rpy="0 0 0"
+        mass_value="0.021767"
+        inertia_ixx="7.4327E-06"
+        inertia_ixy="-2.4046E-08"
+        inertia_ixz="-3.7014E-20"
+        inertia_iyy="5.6772E-06"
+        inertia_iyz="-1.388E-21"
+        inertia_izz="5.5543E-06"
+        origin_xyz="0 0 0"
+        origin_rpy="0 0 0"
+        mesh_filename="package://robotpincher/meshes/Link5.STL"/>
+      
+  <n_joint
+        name="Joint5" type="fixed"
+        origin_xyz="0.11145 0.00105 0" origin_rpy="0 0 0"
+        parent="${l04}"
+        child="${l05}"
+        axis_xyz="0 0 0"/>
+
+<!--Transmissions-->
+
+<n_transmission
+        name="Transmission_1"
+        name_joint="Joint1"
+        name_actuator="motor1"/>
+<n_transmission
+        name="Transmission_2"
+        name_joint="Joint2"
+        name_actuator="motor2"/>
+<n_transmission
+        name="Transmission_3"
+        name_joint="Joint3"
+        name_actuator="motor3"/>
+<n_transmission
+        name="Transmission_4"
+        name_joint="Joint4"
+        name_actuator="motor4"/>
+
+</robot>
